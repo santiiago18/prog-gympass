@@ -16,6 +16,8 @@ public class Socio {
         return this.nombre;
     }
 
+
+    @Override
     public String toString() {
         return "Numero Socio: "  + this.numeroSocio + ", Nombre: " + this.nombre + "}";
     }

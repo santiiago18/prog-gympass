@@ -1,7 +1,7 @@
 public class Sala {
 
-    private int codigoSala;
-    private String descripcion;
+    private final int codigoSala;
+    private final String descripcion;
 
     public Sala(int codigoSala, String descripcion) {
         this.codigoSala = codigoSala;
@@ -17,7 +17,9 @@ public class Sala {
         return this.descripcion;
     }
 
+
+    @Override
     public String toString() {
-        return "Sala: " + this.codigoSala + ", Descripcion: " + this.descripcion;
+        return "Sala: " + this.codigoSala + ", Descripción: " + this.descripcion;
     }
 }
