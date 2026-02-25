@@ -129,13 +129,57 @@ public class Gimnasio {
         return resultado;
     }
 
+    /**
+     * Registra una nueva sala en el gimnasio.
+     * Verifica que no exista otra sala con el mismo código y que haya espacio.
+     * @param sala Sala a incorporar
+     * @return True si se pudo registrar. False si ya existe o esta lleno
+     */
+    public boolean incorporarSala(Sala sala){
+        boolean resultado = false;
+        int posicionSala;
+
+        posicionSala = buscarPrimerHuecoLibreSala();
+
+        if (!contieneSala(sala.getCodigoSala()) && posicionSala != -1 ){
+            listasSalas[posicionSala] = sala;
+            resultado = true;
+        }
+        return resultado;
+    }
 
 
+    /**
+     * Busca la primera posición disponible null en el inventario de salas
+     * @return Muestra el primer hueco libre o -1 si no hay espacio
+     */
+    private int buscarPrimerHuecoLibreSala() {
+        int primeraPosicionSalaLibre = -1;
+        boolean continuarBuscando = true;
+        for (int i = 0; i < MAX_SALAS && continuarBuscando; i++){
+            if (listasSalas[i] == null){
+                primeraPosicionSalaLibre = i;
+                continuarBuscando = false;
+            }
+        }
+        return primeraPosicionSalaLibre;
+    }
 
+    /**
+     * Verifica si una sala ya existe en el gimnasio mediante su código identificador
+     * @param numero El código numérico de la sala a buscar
+     * @return true si la sala ya está registrada. False si no esta registrada
+     */
 
+    public boolean contieneSala(int numero ) {
+        boolean resultado = false;
 
-
-
-
+        for (int i = 0; i < MAX_SALAS && !resultado; i++) {
+            if( listasSalas[i] != null && listasSalas[i].getCodigoSala() == numero ){
+                resultado = true;
+            }
+        }
+        return resultado;
+    }
 
 }
