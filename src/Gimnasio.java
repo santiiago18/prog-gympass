@@ -50,6 +50,7 @@ public class Gimnasio {
             if (!socioExistente ) {
                 listaSocios[hueco] = s;
                 socioRegistrado = true;
+
             }
         }
         return socioRegistrado;
@@ -72,6 +73,22 @@ public class Gimnasio {
             }
         }
         return primeraPosicionLibre;
+    }
+
+
+    public Socio expulsarSocio (int numero){
+        Socio miembroEliminado = null;
+        boolean continuarBuscando = true;
+
+        for(int i = 0; i < MAX_SOCIOS && continuarBuscando; i++){
+            if (listaSocios [i].getNumeroSocio() == numero){
+                miembroEliminado = listaSocios [i];
+                listaSocios [i] = null;
+                continuarBuscando = false;
+            }
+        }
+
+        return miembroEliminado;
     }
 
 
