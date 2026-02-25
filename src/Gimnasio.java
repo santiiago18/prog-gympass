@@ -100,20 +100,33 @@ public class Gimnasio {
     /**
      * Verifica si un socio existe en el listado mediante su número identificador
      * @param numero El número de socio que se desea buscar
-     * @return Indica el numero de la posición en la que esta el socio
+     * @return True cuando el socio existe. False si no existe
      */
 
-    public int existeSocio (int numero){
+    public boolean existeSocio (int numero){
         boolean continuarBuscando = true;
-        int posicionSocio = -1;
+        boolean posicionSocio = false;
 
         for(int i = 0; i < MAX_SOCIOS && continuarBuscando; i++){
             if (listaSocios [i].getNumeroSocio() == numero){
                 continuarBuscando = false;
-                posicionSocio = i;
             }
         }
         return posicionSocio;
+    }
+
+    /**
+     * SI el numero de socio existe en el gimnasio se puede designar como el responsable
+     * @param numeroSocio
+     * @return True si se designo el admin. False si no se designo el admin
+     */
+    boolean designarResponsable(int numeroSocio){
+        boolean resultado = false;
+        if(existeSocio(numeroSocio)){
+            responsableId = numeroSocio;
+            resultado = true;
+        }
+        return resultado;
     }
 
 
