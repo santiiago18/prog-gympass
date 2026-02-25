@@ -75,6 +75,12 @@ public class Gimnasio {
         return primeraPosicionLibre;
     }
 
+    /**
+     * Elimina a un socio del gimnasio basándose en su número de socio.
+     * Si el socio existe, se retira del listado dejando su posición libre
+     * @param numero Es el número de identificador del socio
+     * @return Se elimina el socio si se encuentra. Si es null es porque no se encontro
+     */
 
     public Socio expulsarSocio (int numero){
         Socio miembroEliminado = null;
@@ -90,6 +96,28 @@ public class Gimnasio {
 
         return miembroEliminado;
     }
+
+    /**
+     * Verifica si un socio existe en el listado mediante su número identificador
+     * @param numero El número de socio que se desea buscar
+     * @return Indica el numero de la posición en la que esta el socio
+     */
+
+    public int existeSocio (int numero){
+        boolean continuarBuscando = true;
+        int posicionSocio = -1;
+
+        for(int i = 0; i < MAX_SOCIOS && continuarBuscando; i++){
+            if (listaSocios [i].getNumeroSocio() == numero){
+                continuarBuscando = false;
+                posicionSocio = i;
+            }
+        }
+        return posicionSocio;
+    }
+
+
+
 
 
 
